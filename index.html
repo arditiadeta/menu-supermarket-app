@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Toko Online Deta</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    html { scroll-behavior: smooth; }
+    nav a { transition: color 0.3s ease; }
+    nav a:hover { color: #cce3ff; }
+  </style>
+</head>
+<body>
+
+  <!-- ==== NAVBAR ==== -->
+  <nav class="bg-blue-900 text-white shadow-lg sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold">🛍️ Toko Online Deta</h1>
+      <div class="space-x-6 text-sm sm:text-base">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#contact">Kontak Kami</a>
+        <a href="#alamat">Alamat</a>
+        <a href="#hubungi">Hubungi Kami</a>
+      </div>
+      <button id="cart-btn" class="relative bg-blue-700 px-4 py-2 rounded-lg">
+        Keranjang 🛒
+        <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-xs rounded-full px-2 py-1">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ==== HOME ==== -->
+  <header id="home" class="bg-blue-100 text-center py-10 shadow-md">
+    <h2 class="text-3xl font-bold text-blue-900">Selamat Datang di Toko Online Deta</h2>
+    <p class="text-blue-800 mt-2">Belanja mudah, cepat, dan terpercaya ✨</p>
+  </header>
+
+  <!-- ==== FILTER & PENCARIAN ==== -->
+  <section class="max-w-6xl mx-auto px-6 mt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+    <input type="text" id="search-input" placeholder="🔍 Cari produk..." class="w-full sm:w-1/2 p-2 border border-blue-300 rounded-lg" />
+    <select id="category-select" class="w-full sm:w-1/3 p-2 border border-blue-300 rounded-lg">
+      <option value="all">Semua Kategori</option>
+    </select>
+  </section>
+
+  <!-- ==== PRODUK ==== -->
+  <main class="max-w-6xl mx-auto p-6">
+    <div id="loader" class="text-center text-blue-700 font-semibold mb-4">Memuat produk...</div>
+    <div id="product-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6"></div>
+  </main>
+
+  <!-- ==== MODAL PRODUK ==== -->
+  <div id="productModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
+    <div class="bg-white rounded-lg max-w-md w-full p-6 relative">
+      <button id="closeModalBtn" class="absolute top-2 right-3 text-gray-600 hover:text-black text-lg">✕</button>
+      <img id="modal-image" class="w-48 h-48 mx-auto object-contain mb-3">
+      <h3 id="modal-product-name" class="text-lg font-bold text-center text-blue-900"></h3>
+      <p id="modal-price" class="text-blue-700 font-semibold text-center mt-2"></p>
+      <p id="modal-description" class="text-gray-600 text-sm mt-3 text-justify"></p>
+      <div class="flex justify-between mt-5">
+        <button id="modal-add-to-cart" class="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-lg">Tambah ke Keranjang</button>
+        <a id="whatsapp-btn" target="_blank" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg">Chat via WA</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==== MODAL KERANJANG ==== -->
+  <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
+    <div class="bg-white rounded-lg max-w-lg w-full p-6 relative">
+      <button id="close-cart" class="absolute top-2 right-3 text-gray-600 hover:text-black text-lg">✕</button>
+      <h3 class="text-lg font-bold text-blue-900 mb-3">🛍️ Keranjang Belanja</h3>
+      <div id="cart-items" class="space-y-3"></div>
+      <div class="flex justify-between items-center mt-4">
+        <span id="cart-total" class="text-blue-800 font-semibold"></span>
+        <a id="wa-all" target="_blank" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 hidden">
+          Pesan via WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==== ABOUT ==== -->
+<section id="about" class="bg-white py-10 border-t border-blue-200">
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    <h2 class="text-2xl font-bold text-blue-900 mb-4">Tentang Kami</h2>
+    <p class="text-blue-800 leading-relaxed">
+      <strong>Toko Online Deta</strong> adalah toko modern yang menjual berbagai produk berkualitas tinggi dengan harga terjangkau.
+      Kami berkomitmen untuk memberikan pelayanan yang <strong>cepat, aman, dan terpercaya</strong> kepada seluruh pelanggan di Indonesia.
+      Dengan sistem belanja yang mudah dan ramah pengguna, kami hadir untuk memenuhi kebutuhan Anda secara praktis dan efisien.
+    </p>
+  </div>
+</section>
+
+  <!-- ==== KONTAK ==== -->
+  <section id="contact" class="bg-blue-50 py-10 border-t border-blue-200">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-2xl font-bold text-blue-900 mb-4 text-center">Kontak Kami</h2>
+      <form class="bg-white shadow-md rounded-lg p-6 space-y-4">
+        <input type="text" placeholder="Nama Anda" class="w-full border border-blue-300 rounded-md px-3 py-2" />
+        <input type="email" placeholder="Email Anda" class="w-full border border-blue-300 rounded-md px-3 py-2" />
+        <textarea rows="4" placeholder="Pesan Anda..." class="w-full border border-blue-300 rounded-md px-3 py-2"></textarea>
+        <button type="button" class="bg-blue-700 hover:bg-blue-800 text-white px-6 py-2 rounded-md w-full">
+          Kirim Pesan
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ==== ALAMAT ==== -->
+<section id="alamat" class="bg-white py-10 border-t border-blue-200">
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    <h2 class="text-2xl font-bold text-blue-900 mb-4">📍 Alamat Kami</h2>
+    <p class="text-blue-800 mb-4">
+      Jl. Niken Gandini No. 63 Singosaren, Kec. Jenangan, Kab. Ponorogo, Jawa Timur
+    </p>
+    <iframe 
+      src="https://www.google.com/maps?q=Jl.+Niken+Gandini+No.+63,+Singosaren,+Jenangan,+Kabupaten+Ponorogo,+Jawa+Timur&output=embed" 
+      width="100%" 
+      height="350" 
+      class="rounded-lg shadow-lg" 
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</section>
+
+  <!-- ==== HUBUNGI KAMI ==== -->
+<section id="hubungi" class="bg-blue-50 py-10 border-t border-blue-200">
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    <h2 class="text-2xl font-bold text-blue-900 mb-4">📞 Hubungi Kami</h2>
+    <p class="text-blue-800 mb-6">
+      Ada pertanyaan, saran, atau ingin memesan langsung?  
+      Silakan hubungi kami melalui salah satu cara di bawah ini:
+    </p>
+
+    <div class="flex flex-col sm:flex-row justify-center gap-4 mb-6">
+      <!-- Tombol WhatsApp -->
+      <a href="https://wa.me/6285785036109?text=Halo%20Toko%20Online%20Deta,%20saya%20ingin%20bertanya%20tentang%20produk%20Anda."
+         target="_blank"
+         class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg shadow-md transition">
+        💬 Chat via WhatsApp
+      </a>
+
+      <!-- Tombol Email -->
+      <a href="mailto:detaarditia@gmail.com" 
+         class="bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-lg shadow-md transition">
+        ✉️ Kirim Email
+      </a>
+
+      <!-- Tombol Telepon -->
+      <a href="tel:+6285785036109" 
+         class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md transition">
+        ☎️ Telepon Kami
+      </a>
+    </div>
+
+    <!-- Nomor WhatsApp langsung diklik -->
+    <p class="text-blue-800 mt-6">
+      Atau klik nomor berikut untuk langsung chat WhatsApp:  
+      <br>
+      <a href="https://wa.me/6285785036109"
+         target="_blank"
+         class="text-green-600 font-semibold hover:underline text-lg">
+        📱 +62 857-8503-6109
+      </a>
+    </p>
+  </div>
+</section>
+
+  <!-- ==== FOOTER ==== -->
+  <footer class="bg-blue-900 text-white text-center py-4 mt-10">
+    &copy; 2025 <strong>Toko Online Deta</strong>. Semua Hak Dilindungi.
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

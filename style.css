@@ -1,0 +1,134 @@
+//* ==== FONT & WARNA DASAR ==== */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #e0f2fe; /* biru muda lembut */
+  color: #1e3a8a; /* biru tua untuk teks */
+  transition: background-color 0.3s ease;
+}
+
+/* ==== KARTU PRODUK ==== */
+.product-card {
+  background: #ffffff;
+  border: 2px solid #bfdbfe; /* biru muda */
+  border-radius: 14px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.1);
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  border-color: #2563eb; /* biru utama */
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
+}
+
+/* ==== HEADER ==== */
+header {
+  background-color: #1e40af; /* biru sedang */
+  box-shadow: 0 3px 10px rgba(30, 64, 175, 0.4);
+}
+
+/* ==== INPUT & FILTER ==== */
+input, select {
+  border: 1px solid #93c5fd;
+  background-color: #f0f9ff;
+  color: #1e3a8a;
+  border-radius: 8px;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 4px #60a5fa;
+}
+
+/* ==== MODAL PRODUK ==== */
+#productModal .bg-white,
+#cart-modal .bg-white {
+  border-top: 6px solid #3b82f6;
+}
+
+#modal-add-to-cart {
+  background-color: #2563eb;
+  color: white;
+  border-radius: 10px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#modal-add-to-cart:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+#whatsapp-btn {
+  background-color: #22c55e;
+  color: white;
+  border-radius: 10px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#whatsapp-btn:hover {
+  background-color: #16a34a;
+  transform: translateY(-2px);
+}
+
+/* ==== MODAL KERANJANG ==== */
+#cart-modal {
+  backdrop-filter: blur(3px);
+}
+
+#cart-items button {
+  background-color: #bfdbfe;
+  border-radius: 6px;
+  color: #1e40af;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+#cart-items button:hover {
+  background-color: #60a5fa;
+  color: white;
+}
+
+/* ==== TOAST (NOTIFIKASI TAMBAH KERANJANG) ==== */
+.toast-notification {
+  background-color: #2563eb;
+  color: white;
+  padding: 14px 18px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4);
+  animation: toast-in 0.5s ease-out forwards;
+}
+
+@keyframes toast-in {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* ==== TOMBOL DI KERANJANG ==== */
+#wa-all {
+  background-color: #1d4ed8;
+  color: white;
+  border-radius: 10px;
+}
+
+#wa-all:hover {
+  background-color: #1e40af;
+}
+
+/* ==== SCROLLBAR ==== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #dbeafe;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3b82f6;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1d4ed8;
+}
